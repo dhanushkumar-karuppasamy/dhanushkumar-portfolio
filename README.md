@@ -2,17 +2,19 @@
 
 **Data Analyst | AI Enthusiast**
 
-Modern, production-grade portfolio built with React, Tailwind CSS, and Framer Motion.
+Modern, Figma-inspired portfolio built with React, Tailwind CSS, and Framer Motion.
 
 ## ✨ Features
 
-- 🎨 Cream White + Black premium minimal design
+- 🎨 Black & White minimal design (Figma-inspired)
 - 🌗 Dark/Light mode toggle
 - 📱 Fully responsive
 - ⚡ Smooth animations with Framer Motion
-- 🤖 AI Chatbot (OpenAI ready)
+- 🤖 AI Chatbot (OpenAI GPT-3.5)
 - 📄 Resume download
 - 🔗 GitHub project links
+- 💬 Testimonials section
+- 📧 Contact form
 
 ## 🛠️ Tech Stack
 
@@ -21,6 +23,8 @@ Modern, production-grade portfolio built with React, Tailwind CSS, and Framer Mo
 - Tailwind CSS
 - Framer Motion
 - React Icons
+- OpenAI API
+- Axios
 
 ## 🚀 Quick Start
 
@@ -55,7 +59,8 @@ npm run preview
 
 1. Push to GitHub
 2. Import project on [Vercel](https://vercel.com)
-3. Deploy automatically
+3. Add environment variable: `VITE_OPENAI_API_KEY`
+4. Deploy automatically
 
 ### Manual Build
 
@@ -68,8 +73,40 @@ npm run build
 
 - **Colors**: Edit `tailwind.config.js`
 - **Projects**: Update `src/data/projects.js`
-- **Content**: Modify components in `src/components/`
+- **Content**: Modify components in `src/components/sections/`
+- **Resume**: Replace `public/DhanushKumar-K Resume2026.pdf`
+
+## 📁 Project Structure
+
+```
+portfolio/
+├── src/
+│   ├── assets/           # SVG illustrations
+│   ├── components/
+│   │   ├── layout/       # Navbar, Footer
+│   │   ├── sections/     # Page sections
+│   │   └── ui/           # UI components
+│   ├── api/              # API handlers
+│   ├── data/             # Data files
+│   └── App.jsx
+├── public/               # Static files
+└── package.json
+```
+
+## 🎯 Sections
+
+- **Hero**: Introduction with illustration
+- **About**: Sidebar layout with detailed bio
+- **Skills**: Grid with 10 skills (one featured)
+- **Projects**: Numbered alternating layout (01, 02, 03)
+- **Testimonials**: 3-column cards (center featured)
+- **Contact**: Form + contact info
+- **Footer**: Social links
 
 ## 📝 License
 
 MIT © Dhanush Kumar
+
+---
+
+Built with ❤️ using React + Tailwind CSS
