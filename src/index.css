@@ -12,6 +12,23 @@
   --border: rgba(255, 255, 255, 0.08);
   --text-primary: #ffffff;
   --text-secondary: #8b949e;
+
+  /* Responsive layout variables */
+  --banner-height: 220px;
+  --avatar-size: 104px;
+  --avatar-bottom: -52px;
+  --connect-bottom: -76px;
+  --name-pt: 96px;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --banner-height: 160px;
+    --avatar-size: 88px;
+    --avatar-bottom: -44px;
+    --connect-bottom: -68px;
+    --name-pt: 84px;
+  }
 }
 
 * {
@@ -32,9 +49,11 @@ body {
 
 /* ─── Hero Banner ─── */
 .hero-banner {
-  background: linear-gradient(135deg, #b8d4f0 0%, #c9e4f5 40%, #d4eef7 70%, #bbd6ef 100%);
+  background: linear-gradient(135deg, #070a13 0%, #0d1117 100%);
+  border-bottom: 1px solid var(--border);
   position: relative;
   overflow: hidden;
+  height: var(--banner-height);
 }
 
 /* ─── 3D Floating Object ─── */
@@ -166,6 +185,24 @@ body {
   transform: translateY(-1px);
 }
 
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  padding: 10px 24px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(224, 64, 251, 0.08);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
 /* ─── Project card hover ─── */
 .project-card {
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
@@ -179,13 +216,16 @@ body {
 
 /* ─── Feed card hover ─── */
 .feed-card {
-  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: block;
 }
 
 .feed-card:hover {
-  transform: translateY(-2px);
-  border-color: rgba(224, 64, 251, 0.3) !important;
+  transform: translateY(-4px);
+  border-color: rgba(224, 64, 251, 0.4) !important;
   background: rgba(255, 255, 255, 0.06) !important;
+  box-shadow: 0 8px 24px rgba(224, 64, 251, 0.15), 0 0 12px rgba(224, 64, 251, 0.05);
 }
 
 /* ─── Avatar glow ─── */
@@ -308,3 +348,116 @@ body {
 .dot-orbit1 { animation: dotOrbit 4s linear infinite; }
 .dot-orbit2 { animation: dotOrbit2 6s linear infinite; }
 .dot-orbit3 { animation: dotOrbit3 8s linear infinite; }
+
+/* ─── Toast Notifications ─── */
+.toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 360px;
+  width: calc(100vw - 48px);
+}
+
+.toast {
+  background: rgba(13, 17, 23, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 20px;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(224, 64, 251, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: toastSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: all 0.2s ease;
+}
+
+.toast-success {
+  border-left: 4px solid var(--accent);
+}
+
+.toast-error {
+  border-left: 4px solid #fc8181;
+}
+
+.toast-info {
+  border-left: 4px solid #63b3ed;
+}
+
+@keyframes toastSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ─── Honeypot spam defense ─── */
+.hidden-honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* ─── Neural AI Banner Animations ─── */
+@keyframes pulseLine {
+  0% { stroke-dashoffset: 24; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes nodePulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 4px #e040fb); }
+  50% { transform: scale(1.1); filter: drop-shadow(0 0 10px #00f0ff); }
+}
+
+@keyframes serverLed {
+  0%, 100% { fill: #00f0ff; opacity: 0.3; }
+  50% { fill: #e040fb; opacity: 1; filter: drop-shadow(0 0 4px #e040fb); }
+}
+
+@keyframes serverLed2 {
+  0%, 100% { fill: #e040fb; opacity: 0.9; filter: drop-shadow(0 0 4px #e040fb); }
+  50% { fill: #00f0ff; opacity: 0.2; }
+}
+
+@keyframes floatScene {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(0.5deg); }
+}
+
+.floating-scene {
+  animation: floatScene 6s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.neural-node {
+  animation: nodePulse 4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.server-led {
+  animation: serverLed 1.2s infinite ease-in-out;
+}
+
+.server-led-alt {
+  animation: serverLed2 1.8s infinite ease-in-out;
+}
+
+.pipeline-line {
+  stroke-dasharray: 6 12;
+  animation: pulseLine 1s linear infinite;
+}
